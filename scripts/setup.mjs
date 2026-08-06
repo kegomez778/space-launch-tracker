@@ -34,14 +34,22 @@ step('Variables de entorno');
 ensureEnv(apiDir, 'api');
 ensureEnv(webDir, 'web');
 
+// El backend y el frontend importan @slt/shared compilado, así que construirlo
+// es el primer paso y no un detalle: sin él, el sembrado no arranca.
+step('Paquete compartido');
+run('npm run build --workspace packages/shared', root);
+
 step('Cliente de Prisma');
 run('npx prisma generate', apiDir);
 
 step('Base de datos (SQLite)');
 run('npx prisma migrate deploy', apiDir);
 
+// Se invoca el script del workspace en lugar del fichero directamente: usa
+// ts-node, que emite metadatos de decorador. Con esbuild (tsx) la inyección de
+// dependencias de Nest no puede resolver por tipo.
 step('Datos iniciales desde fixtures');
-run('npx tsx prisma/seed.ts', apiDir);
+run('npm run db:seed', apiDir);
 
 console.log('\n\x1b[32mListo.\x1b[0m Arranca la aplicación con: \x1b[1mnpm run dev\x1b[0m');
 console.log('Frontend en http://localhost:5173 · API en http://localhost:3000/api\n');
