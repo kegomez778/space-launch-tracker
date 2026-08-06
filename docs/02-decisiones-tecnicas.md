@@ -49,7 +49,14 @@ arranca no se evalúa, por bueno que sea el código de dentro.
 
 ## ADR-001 — Backend: NestJS
 
-**Estado**: aceptada · **Opciones**: NestJS · Express · Fastify
+**Estado**: **confirmada en checkpoint de Fase 2** · **Opciones**: NestJS · Express · Fastify
+
+**Confirmación del checkpoint.** Decisión ratificada con esta justificación: arquitectura
+modular con inyección de dependencias, similar en espíritu a Laravel/.NET, más consistente
+y profesional de cara a un evaluador, y **sin añadir ninguna dependencia de instalación
+adicional** — este último punto es el que cierra el debate, porque el argumento más fuerte
+a favor de Express era la ligereza, y NestJS no cuesta un solo paso más de setup
+(ADR-008): es una dependencia npm más dentro del mismo `npm install`.
 
 **Contexto.** El enunciado exige "separación real de capas (no todo en un
 controlador)". Además el proyecto tiene bastantes preocupaciones transversales reales:
@@ -86,9 +93,27 @@ estructura crece con el tiempo de vida del proyecto.
 
 ## ADR-002 — ORM: Prisma 7
 
-**Estado**: aceptada · **Opciones**: Prisma · TypeORM · Drizzle
+**Estado**: **confirmada en checkpoint de Fase 2** · **Opciones**: Prisma 7 · Prisma 6 · TypeORM · Drizzle
 
 **Decisión: Prisma 7 con `@prisma/adapter-better-sqlite3`.**
+
+**Confirmación del checkpoint — Prisma 7 frente a fijar Prisma 6.** El debate abierto era
+si pinchar la major anterior por tener documentación pública alineada. Se elige **Prisma 7**
+por tres razones: es la versión estable y recomendada actualmente, tiene soporte activo, y
+**el cliente ya no lleva motor en Rust por defecto**, lo que lo hace más liviano y reduce
+fricción de instalación.
+
+Ese tercer punto no es una suposición, se comprobó en el spike: el cliente generado incluye
+un **compilador de consultas en WebAssembly** (`query_compiler_fast_bg.wasm`) y la búsqueda
+de binarios nativos en `node_modules` tras instalar **no devolvió ningún motor de Prisma** —
+el único `.node` presente era el de `@node-rs/argon2`. Es decir, la arquitectura de driver
+adapters de v7 (la misma que obliga al `prisma.config.ts` documentado abajo, y que a primera
+vista parecía solo un coste) es justamente lo que elimina la descarga de motor. **El
+inconveniente y la ventaja son la misma decisión de diseño de Prisma.**
+
+Contrapartida asumida: la documentación pública y las respuestas de StackOverflow escritas
+para v5/v6 **no coinciden** con este repositorio. Se mitiga documentándolo explícitamente
+aquí y en el README, que es exactamente para lo que existe este ADR.
 
 **Por qué.**
 1. **Tipado end-to-end**, que es lo que hace cumplible el requisito de "nada de `any`".
@@ -431,8 +456,8 @@ tests deben pasar en un avión, en el CI y en este entorno con las APIs bloquead
 | # | Decisión | Elegido | Principal descartado |
 |---|---|---|---|
 | 000 | Stack base | Node + TS + SQLite | PHP/Laravel, .NET (mi stack real) |
-| 001 | Backend | NestJS | Express |
-| 002 | ORM | Prisma 7 | TypeORM |
+| 001 | Backend | NestJS ✔ confirmada | Express |
+| 002 | ORM | Prisma 7 ✔ confirmada | Prisma 6, TypeORM |
 | 003 | Estado frontend | TanStack Query + URL + Context | Zustand / Redux |
 | 003 | Estilos | CSS Modules + tokens | Tailwind, MUI/shadcn |
 | 004 | Auth | JWT en cookie httpOnly, Argon2id | JWT en localStorage, OAuth |
