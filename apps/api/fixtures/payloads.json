@@ -1,0 +1,200 @@
+[
+  {
+    "id": "5eb0e4b5b6c3bb0006eeb1e1",
+    "name": "FalconSat-2",
+    "type": "Satellite",
+    "launch": "5eb87cd9ffd86e000604b32a",
+    "mass_kg": 20,
+    "orbit": "LEO",
+    "customers": ["DARPA"],
+    "manufacturers": ["USAF Academy"],
+    "nationalities": ["United States"]
+  },
+  {
+    "id": "5eb0e4b6b6c3bb0006eeb1e4",
+    "name": "RatSat",
+    "type": "Satellite",
+    "launch": "5eb87cdaffd86e000604b32d",
+    "mass_kg": 165,
+    "orbit": "LEO",
+    "customers": ["SpaceX"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States"]
+  },
+  {
+    "id": "5eb0e4c6b6c3bb0006eeb210",
+    "name": "CRS-16 Dragon",
+    "type": "Dragon 1.1",
+    "launch": "5eb87d13ffd86e000604b380",
+    "mass_kg": 2573,
+    "orbit": "ISS",
+    "customers": ["NASA (CRS)"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States"]
+  },
+  {
+    "id": "5eb0e4d1b6c3bb0006eeb230",
+    "name": "Amos-17",
+    "type": "Satellite",
+    "launch": "5eb87d42ffd86e000604b384",
+    "mass_kg": 6500,
+    "orbit": "GTO",
+    "customers": ["Spacecom"],
+    "manufacturers": ["Boeing"],
+    "nationalities": ["Israel"]
+  },
+  {
+    "id": "5eb0e4d5b6c3bb0006eeb240",
+    "name": "Arabsat-6A",
+    "type": "Satellite",
+    "launch": "5eb87d47ffd86e000604b38a",
+    "mass_kg": 6465,
+    "orbit": "GTO",
+    "customers": ["Arabsat"],
+    "manufacturers": ["Lockheed Martin"],
+    "nationalities": ["Saudi Arabia"]
+  },
+  {
+    "id": "5eb0e4dab6c3bb0006eeb250",
+    "name": "Starlink 4",
+    "type": "Satellite",
+    "launch": "5eb87d4affd86e000604b38f",
+    "mass_kg": 15400,
+    "orbit": "VLEO",
+    "customers": ["SpaceX"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States"]
+  },
+  {
+    "id": "600f9b6d8f798e2a4d5f9f11",
+    "name": "ÑuSat 7-8",
+    "type": "Satellite",
+    "launch": "600f9a8d8f798e2a4d5f9f01",
+    "mass_kg": 82,
+    "orbit": "SSO",
+    "customers": ["Satellogic"],
+    "manufacturers": ["Satellogic"],
+    "nationalities": ["Argentina"]
+  },
+  {
+    "id": "600f9b6d8f798e2a4d5f9f12",
+    "name": "iCEYE X-9",
+    "type": "Satellite",
+    "launch": "600f9a8d8f798e2a4d5f9f01",
+    "mass_kg": 85,
+    "orbit": "SSO",
+    "customers": ["ICEYE"],
+    "manufacturers": ["ICEYE"],
+    "nationalities": ["Finland", "  ", "Poland"]
+  },
+  {
+    "id": "600f9b6d8f798e2a4d5f9f13",
+    "name": "Charlie (V-R3x)",
+    "type": "Satellite",
+    "launch": "600f9a8d8f798e2a4d5f9f01",
+    "mass_kg": null,
+    "orbit": "SSO",
+    "customers": ["NASA"],
+    "manufacturers": [],
+    "nationalities": ["USA", "Republic of Korea"]
+  },
+  {
+    "id": "60e0f3b1cd3b2f1e8c4a7b11",
+    "name": "Crew Dragon Endurance",
+    "type": "Crew Dragon",
+    "launch": "60e0f2a1cd3b2f1e8c4a7b01",
+    "mass_kg": 12519,
+    "orbit": "ISS",
+    "customers": ["NASA (CCP)"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States", "Germany"]
+  },
+  {
+    "id": "62f7a2c3cd3b2f1e8c4a7c11",
+    "name": "Galileo FOC FM25-FM27",
+    "type": "Satellite",
+    "launch": "62f7a1b3cd3b2f1e8c4a7c01",
+    "mass_kg": 1580,
+    "orbit": "MEO",
+    "customers": ["European Space Agency"],
+    "manufacturers": ["OHB System"],
+    "nationalities": ["European Union"]
+  },
+  {
+    "id": "63a8b2d2cd3b2f1e8c4a7d11",
+    "name": "KOMPSAT-6",
+    "type": "Satellite",
+    "launch": "63a8b1c2cd3b2f1e8c4a7d01",
+    "mass_kg": 1700,
+    "orbit": "SSO",
+    "customers": ["KARI"],
+    "manufacturers": ["KAI"],
+    "nationalities": ["Republic of Korea"]
+  },
+  {
+    "id": "64b9c3e3cd3b2f1e8c4a7e11",
+    "name": "425 Project SAR-4",
+    "type": "Satellite",
+    "launch": "64b9c2d3cd3b2f1e8c4a7e01",
+    "mass_kg": 800,
+    "orbit": "SSO",
+    "customers": ["ADD"],
+    "manufacturers": ["Thales Alenia Space"],
+    "nationalities": ["South Korea", "UK"]
+  },
+  {
+    "id": "64b9c3e3cd3b2f1e8c4a7e12",
+    "name": "Tanager-2",
+    "type": "Satellite",
+    "launch": "64b9c2d3cd3b2f1e8c4a7e01",
+    "mass_kg": 120,
+    "orbit": "SSO",
+    "customers": ["Carbon Mapper"],
+    "manufacturers": ["Planet Labs"],
+    "nationalities": ["Freedonia"]
+  },
+  {
+    "id": "65c0d4f4cd3b2f1e8c4a7f11",
+    "name": "Logistics Module A",
+    "type": "Cargo",
+    "launch": "65c0d3e4cd3b2f1e8c4a7f01",
+    "mass_kg": 4200,
+    "orbit": "HEO",
+    "customers": ["NASA"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States", "Japan"]
+  },
+  {
+    "id": "66d1e5f5cd3b2f1e8c4a8011",
+    "name": "Starlink V2 Mini x22",
+    "type": "Satellite",
+    "launch": "66d1e4f5cd3b2f1e8c4a8001",
+    "mass_kg": 17600,
+    "orbit": "VLEO",
+    "customers": ["SpaceX"],
+    "manufacturers": ["SpaceX"],
+    "nationalities": ["United States"]
+  },
+  {
+    "id": "67e2f6a6cd3b2f1e8c4a8111",
+    "name": "Axiom Hab Module 2",
+    "type": "Station Module",
+    "launch": "67e2f5a6cd3b2f1e8c4a8101",
+    "mass_kg": 9800,
+    "orbit": "ISS",
+    "customers": ["Axiom Space"],
+    "manufacturers": ["Thales Alenia Space"],
+    "nationalities": ["United States", "Türkiye", "Freedonia"]
+  },
+  {
+    "id": "6bc6d9eacd3b2f1e8c4a8501",
+    "name": "Carga sin lanzamiento asociado",
+    "type": "Satellite",
+    "launch": null,
+    "mass_kg": 500,
+    "orbit": "LEO",
+    "customers": [],
+    "manufacturers": [],
+    "nationalities": ["United States"]
+  }
+]

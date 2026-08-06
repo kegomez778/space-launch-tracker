@@ -1,0 +1,302 @@
+[
+  {
+    "name": { "common": "United States", "official": "United States of America" },
+    "cca2": "US",
+    "cca3": "USA",
+    "altSpellings": ["US", "USA", "United States of America"],
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": ["Washington, D.C."],
+    "latlng": [38.0, -97.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/us.png",
+      "svg": "https://flagcdn.com/us.svg",
+      "alt": "Bandera de Estados Unidos: trece franjas rojas y blancas y cincuenta estrellas sobre fondo azul."
+    }
+  },
+  {
+    "name": { "common": "Germany", "official": "Federal Republic of Germany" },
+    "cca2": "DE",
+    "cca3": "DEU",
+    "altSpellings": ["DE", "Deutschland", "Bundesrepublik Deutschland"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": ["Berlin"],
+    "latlng": [51.0, 9.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/de.png",
+      "svg": "https://flagcdn.com/de.svg",
+      "alt": "Bandera de Alemania: tres franjas horizontales negra, roja y amarilla."
+    }
+  },
+  {
+    "name": { "common": "South Korea", "official": "Republic of Korea" },
+    "cca2": "KR",
+    "cca3": "KOR",
+    "altSpellings": ["KR", "Korea, Republic of", "Republic of Korea", "Han-guk"],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": ["Seoul"],
+    "latlng": [37.0, 127.5],
+    "flags": {
+      "png": "https://flagcdn.com/w320/kr.png",
+      "svg": "https://flagcdn.com/kr.svg",
+      "alt": "Bandera de Corea del Sur: círculo rojo y azul sobre fondo blanco con cuatro trigramas negros."
+    }
+  },
+  {
+    "name": { "common": "Israel", "official": "State of Israel" },
+    "cca2": "IL",
+    "cca3": "ISR",
+    "altSpellings": ["IL", "Medinat Yisra'el"],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": ["Jerusalem"],
+    "latlng": [31.5, 34.75],
+    "flags": {
+      "png": "https://flagcdn.com/w320/il.png",
+      "svg": "https://flagcdn.com/il.svg",
+      "alt": "Bandera de Israel: estrella de David azul entre dos franjas azules sobre fondo blanco."
+    }
+  },
+  {
+    "name": { "common": "Saudi Arabia", "official": "Kingdom of Saudi Arabia" },
+    "cca2": "SA",
+    "cca3": "SAU",
+    "altSpellings": ["SA", "Al-Mamlakah al-'Arabiyyah as-Su'udiyyah"],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": ["Riyadh"],
+    "latlng": [25.0, 45.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/sa.png",
+      "svg": "https://flagcdn.com/sa.svg",
+      "alt": "Bandera de Arabia Saudí: fondo verde con inscripción en árabe y un sable blanco."
+    }
+  },
+  {
+    "name": { "common": "Argentina", "official": "Argentine Republic" },
+    "cca2": "AR",
+    "cca3": "ARG",
+    "altSpellings": ["AR", "Argentine Republic", "República Argentina"],
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": ["Buenos Aires"],
+    "latlng": [-34.0, -64.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/ar.png",
+      "svg": "https://flagcdn.com/ar.svg",
+      "alt": "Bandera de Argentina: dos franjas celestes, una blanca y un sol dorado en el centro."
+    }
+  },
+  {
+    "name": { "common": "Finland", "official": "Republic of Finland" },
+    "cca2": "FI",
+    "cca3": "FIN",
+    "altSpellings": ["FI", "Suomi", "Suomen tasavalta"],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": ["Helsinki"],
+    "latlng": [64.0, 26.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/fi.png",
+      "svg": "https://flagcdn.com/fi.svg",
+      "alt": "Bandera de Finlandia: cruz nórdica azul sobre fondo blanco."
+    }
+  },
+  {
+    "name": { "common": "Poland", "official": "Republic of Poland" },
+    "cca2": "PL",
+    "cca3": "POL",
+    "altSpellings": ["PL", "Polska", "Rzeczpospolita Polska"],
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": ["Warsaw"],
+    "latlng": [52.0, 20.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/pl.png",
+      "svg": "https://flagcdn.com/pl.svg",
+      "alt": "Bandera de Polonia: franja blanca sobre franja roja."
+    }
+  },
+  {
+    "name": { "common": "Japan", "official": "Japan" },
+    "cca2": "JP",
+    "cca3": "JPN",
+    "altSpellings": ["JP", "Nippon", "Nihon"],
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": ["Tokyo"],
+    "latlng": [36.0, 138.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/jp.png",
+      "svg": "https://flagcdn.com/jp.svg",
+      "alt": "Bandera de Japón: círculo rojo centrado sobre fondo blanco."
+    }
+  },
+  {
+    "name": { "common": "Türkiye", "official": "Republic of Türkiye" },
+    "cca2": "TR",
+    "cca3": "TUR",
+    "altSpellings": ["TR", "Turkey", "Turkiye", "Türkiye Cumhuriyeti"],
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": ["Ankara"],
+    "latlng": [39.0, 35.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/tr.png",
+      "svg": "https://flagcdn.com/tr.svg",
+      "alt": "Bandera de Turquía: media luna y estrella blancas sobre fondo rojo."
+    }
+  },
+  {
+    "name": { "common": "United Kingdom", "official": "United Kingdom of Great Britain and Northern Ireland" },
+    "cca2": "GB",
+    "cca3": "GBR",
+    "altSpellings": ["GB", "UK", "Great Britain"],
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": ["London"],
+    "latlng": [54.0, -2.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/gb.png",
+      "svg": "https://flagcdn.com/gb.svg",
+      "alt": "Bandera del Reino Unido: cruces superpuestas roja y blanca sobre fondo azul."
+    }
+  },
+  {
+    "name": { "common": "Marshall Islands", "official": "Republic of the Marshall Islands" },
+    "cca2": "MH",
+    "cca3": "MHL",
+    "altSpellings": ["MH", "Aolepān Aorōkin M̧ajeļ"],
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": ["Majuro"],
+    "latlng": [9.0, 168.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/mh.png",
+      "svg": "https://flagcdn.com/mh.svg",
+      "alt": "Bandera de las Islas Marshall: fondo azul con franjas diagonales naranja y blanca y una estrella."
+    }
+  },
+  {
+    "name": { "common": "France", "official": "French Republic" },
+    "cca2": "FR",
+    "cca3": "FRA",
+    "altSpellings": ["FR", "French Republic", "République française"],
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": ["Paris"],
+    "latlng": [46.0, 2.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/fr.png",
+      "svg": "https://flagcdn.com/fr.svg",
+      "alt": "Bandera de Francia: tres franjas verticales azul, blanca y roja."
+    }
+  },
+  {
+    "name": { "common": "Spain", "official": "Kingdom of Spain" },
+    "cca2": "ES",
+    "cca3": "ESP",
+    "altSpellings": ["ES", "Kingdom of Spain", "Reino de España"],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": ["Madrid"],
+    "latlng": [40.0, -4.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/es.png",
+      "svg": "https://flagcdn.com/es.svg",
+      "alt": "Bandera de España: franja amarilla entre dos franjas rojas, con el escudo nacional."
+    }
+  },
+  {
+    "name": { "common": "Canada", "official": "Canada" },
+    "cca2": "CA",
+    "cca3": "CAN",
+    "altSpellings": ["CA"],
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": ["Ottawa"],
+    "latlng": [60.0, -95.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/ca.png",
+      "svg": "https://flagcdn.com/ca.svg",
+      "alt": "Bandera de Canadá: hoja de arce roja sobre fondo blanco entre dos franjas rojas."
+    }
+  },
+  {
+    "name": { "common": "Mexico", "official": "United Mexican States" },
+    "cca2": "MX",
+    "cca3": "MEX",
+    "altSpellings": ["MX", "Mexicanos", "Estados Unidos Mexicanos"],
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": ["Mexico City"],
+    "latlng": [23.0, -102.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/mx.png",
+      "svg": "https://flagcdn.com/mx.svg",
+      "alt": "Bandera de México: tres franjas verticales verde, blanca y roja con el escudo nacional."
+    }
+  },
+  {
+    "name": { "common": "Colombia", "official": "Republic of Colombia" },
+    "cca2": "CO",
+    "cca3": "COL",
+    "altSpellings": ["CO", "Republic of Colombia", "República de Colombia"],
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": ["Bogotá"],
+    "latlng": [4.0, -72.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/co.png",
+      "svg": "https://flagcdn.com/co.svg",
+      "alt": "Bandera de Colombia: franja amarilla superior, azul y roja."
+    }
+  },
+  {
+    "name": { "common": "Brazil", "official": "Federative Republic of Brazil" },
+    "cca2": "BR",
+    "cca3": "BRA",
+    "altSpellings": ["BR", "Brasil", "Republic of Brazil"],
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": ["Brasília"],
+    "latlng": [-10.0, -55.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/br.png",
+      "svg": "https://flagcdn.com/br.svg",
+      "alt": "Bandera de Brasil: rombo amarillo sobre fondo verde con un globo azul estrellado."
+    }
+  },
+  {
+    "name": { "common": "India", "official": "Republic of India" },
+    "cca2": "IN",
+    "cca3": "IND",
+    "altSpellings": ["IN", "Bhārat", "Republic of India"],
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": ["New Delhi"],
+    "latlng": [20.0, 77.0],
+    "flags": {
+      "png": "https://flagcdn.com/w320/in.png",
+      "svg": "https://flagcdn.com/in.svg",
+      "alt": "Bandera de India: franjas azafrán, blanca y verde con la rueda de Ashoka en el centro."
+    }
+  },
+  {
+    "name": { "common": "Italy", "official": "Italian Republic" },
+    "cca2": "IT",
+    "cca3": "ITA",
+    "altSpellings": ["IT", "Italia", "Italian Republic"],
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": ["Rome"],
+    "latlng": [42.83333333, 12.83333333],
+    "flags": {
+      "png": "https://flagcdn.com/w320/it.png",
+      "svg": "https://flagcdn.com/it.svg",
+      "alt": "Bandera de Italia: tres franjas verticales verde, blanca y roja."
+    }
+  }
+]

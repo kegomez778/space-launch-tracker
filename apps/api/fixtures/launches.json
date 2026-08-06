@@ -1,0 +1,352 @@
+[
+  {
+    "id": "5eb87cd9ffd86e000604b32a",
+    "flight_number": 1,
+    "name": "FalconSat",
+    "date_utc": "2006-03-24T22:30:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "tbd": false,
+    "net": false,
+    "success": false,
+    "failures": [{ "time": 33, "altitude": null, "reason": "merlin engine failure" }],
+    "details": "Pérdida del vehículo por fuga de combustible durante el ascenso.",
+    "rocket": "5e9d0d95eda69955f709d1eb",
+    "launchpad": "5e9e4501f5090910d4566f83",
+    "payloads": ["5eb0e4b5b6c3bb0006eeb1e1"],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": "https://en.wikipedia.org/wiki/DemoSat",
+      "article": null
+    }
+  },
+  {
+    "id": "5eb87cdaffd86e000604b32d",
+    "flight_number": 4,
+    "name": "RatSat",
+    "date_utc": "2008-09-28T23:15:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Primer vuelo del Falcon 1 en alcanzar órbita.",
+    "rocket": "5e9d0d95eda69955f709d1eb",
+    "launchpad": "5e9e4501f5090910d4566f83",
+    "payloads": ["5eb0e4b6b6c3bb0006eeb1e4"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/95/39/sRqN7rsv_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=dLQ2tZEH6G0",
+      "wikipedia": "https://en.wikipedia.org/wiki/Ratsat",
+      "article": ""
+    }
+  },
+  {
+    "id": "5eb87d13ffd86e000604b380",
+    "flight_number": 61,
+    "name": "CRS-16",
+    "date_utc": "2018-12-05T18:16:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [
+      { "time": null, "altitude": null, "reason": null },
+      { "time": 480, "altitude": null, "reason": "grid fin hydraulic pump stall on booster landing" }
+    ],
+    "details": "Misión de reabastecimiento a la Estación Espacial Internacional.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": ["5eb0e4c6b6c3bb0006eeb210"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/e9/c9/JBTsGrDl_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=1RwOqAgYyeI",
+      "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_CRS-16",
+      "article": "https://spaceflightnow.com/2018/12/05/"
+    }
+  },
+  {
+    "id": "5eb87d42ffd86e000604b384",
+    "flight_number": 78,
+    "name": "Amos-17",
+    "date_utc": "2019-08-06T23:23:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "   ",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": ["5eb0e4d1b6c3bb0006eeb230"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/a1/2b/XvhGxDrL_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=YoTfViS45Uk",
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "5eb87d47ffd86e000604b38a",
+    "flight_number": 95,
+    "name": "Arabsat-6A",
+    "date_utc": "2019-04-11T22:35:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Primer vuelo comercial del Falcon Heavy.",
+    "rocket": "5e9d0d95eda69974db09d1ed",
+    "launchpad": "5e9e4502f509094188566f88",
+    "payloads": ["5eb0e4d5b6c3bb0006eeb240"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/9a/96/nLppz9HW_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=TXMGu2d8c8g",
+      "wikipedia": "https://en.wikipedia.org/wiki/Arabsat-6A",
+      "article": null
+    }
+  },
+  {
+    "id": "5eb87d4affd86e000604b38f",
+    "flight_number": 102,
+    "name": "Starlink 4",
+    "date_utc": "2020-02-17T15:05:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": null,
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": ["5eb0e4dab6c3bb0006eeb250"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/5b/02/QcoWzKGD_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=hMxGhHhLaEU",
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "600f9a8d8f798e2a4d5f9f01",
+    "flight_number": 130,
+    "name": "Transporter-1",
+    "date_utc": "2021-01-24T15:00:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Misión dedicada de vuelo compartido con 143 cargas útiles de múltiples países.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": ["600f9b6d8f798e2a4d5f9f11", "600f9b6d8f798e2a4d5f9f12", "600f9b6d8f798e2a4d5f9f13"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/6c/e8/pnGRnkYQ_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=8-MTAasEuFk",
+      "wikipedia": "https://en.wikipedia.org/wiki/Transporter-1",
+      "article": null
+    }
+  },
+  {
+    "id": "60e0f2a1cd3b2f1e8c4a7b01",
+    "flight_number": 148,
+    "name": "Crew-3",
+    "date_utc": "2021-11-11T02:03:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Tercera rotación operativa de tripulación a la Estación Espacial Internacional.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4502f509094188566f88",
+    "payloads": ["60e0f3b1cd3b2f1e8c4a7b11"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/6b/1a/4KJcwXqA_o.png", "large": null },
+      "webcast": "https://www.youtube.com/watch?v=nu9Ptw2VRpM",
+      "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Crew-3",
+      "article": null
+    }
+  },
+  {
+    "id": "62f7a1b3cd3b2f1e8c4a7c01",
+    "flight_number": 175,
+    "name": "Galileo L12",
+    "date_utc": "2024-04-28T00:34:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Despliegue de satélites de navegación europeos.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4502f509094188566f88",
+    "payloads": ["62f7a2c3cd3b2f1e8c4a7c11"],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "63a8b1c2cd3b2f1e8c4a7d01",
+    "flight_number": 188,
+    "name": "KOMPSAT-6",
+    "date_utc": "2025-02-14T09:12:00.000Z",
+    "date_precision": "hour",
+    "upcoming": false,
+    "success": true,
+    "failures": [],
+    "details": "Satélite de observación terrestre con radar de apertura sintética.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f5090995de566f86",
+    "payloads": ["63a8b2d2cd3b2f1e8c4a7d11"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/1c/4d/KpQrTvWx_o.png", "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "64b9c2d3cd3b2f1e8c4a7e01",
+    "flight_number": 201,
+    "name": "Bandwagon-4",
+    "date_utc": "2025-11-30T18:45:00.000Z",
+    "date_precision": "hour",
+    "upcoming": true,
+    "tbd": false,
+    "net": false,
+    "success": null,
+    "failures": [],
+    "details": "Vuelo compartido a órbita de media inclinación.",
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": ["64b9c3e3cd3b2f1e8c4a7e11", "64b9c3e3cd3b2f1e8c4a7e12"],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "65c0d3e4cd3b2f1e8c4a7f01",
+    "flight_number": 214,
+    "name": "Europa Clipper Support",
+    "date_utc": "2026-09-18T14:20:00.000Z",
+    "date_precision": "hour",
+    "upcoming": true,
+    "tbd": false,
+    "net": false,
+    "success": null,
+    "failures": [],
+    "details": "Ventana de lanzamiento confirmada. Misión de apoyo logístico.",
+    "rocket": "5e9d0d95eda69974db09d1ed",
+    "launchpad": "5e9e4502f509094188566f88",
+    "payloads": ["65c0d4f4cd3b2f1e8c4a7f11"],
+    "links": {
+      "patch": { "small": "https://images2.imgbox.com/7e/3f/MnBvCxZa_o.png", "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "66d1e4f5cd3b2f1e8c4a8001",
+    "flight_number": 220,
+    "name": "Starlink 12-9",
+    "date_utc": "2026-10-05T00:00:00.000Z",
+    "date_precision": "day",
+    "upcoming": true,
+    "tbd": true,
+    "net": false,
+    "success": null,
+    "failures": [],
+    "details": null,
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f5090995de566f86",
+    "payloads": ["66d1e5f5cd3b2f1e8c4a8011"],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "67e2f5a6cd3b2f1e8c4a8101",
+    "flight_number": 231,
+    "name": "Axiom Station Module 2",
+    "date_utc": "2026-12-01T00:00:00.000Z",
+    "date_precision": "month",
+    "upcoming": true,
+    "tbd": true,
+    "net": true,
+    "success": null,
+    "failures": [],
+    "details": "Fecha pendiente de confirmación por el cliente.",
+    "rocket": "5e9d0d95eda69974db09d1ed",
+    "launchpad": "5e9e4502f509094188566f88",
+    "payloads": ["67e2f6a6cd3b2f1e8c4a8111"],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "68f3a6b7cd3b2f1e8c4a8201",
+    "flight_number": 240,
+    "name": "Starship Orbital Flight 12",
+    "date_utc": "2027-04-01T00:00:00.000Z",
+    "date_precision": "quarter",
+    "upcoming": true,
+    "tbd": true,
+    "net": false,
+    "success": null,
+    "failures": [],
+    "details": "Ventana estimada. Sujeta a certificación del vehículo.",
+    "rocket": "5e9d0d96eda699382d09d1ee",
+    "launchpad": "5e9e4502f5090927f8566f85",
+    "payloads": [],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "69a4b7c8cd3b2f1e8c4a8301",
+    "flight_number": 255,
+    "name": "Mars Cargo Precursor",
+    "date_utc": "2028-01-01T00:00:00.000Z",
+    "date_precision": "year",
+    "upcoming": true,
+    "tbd": true,
+    "net": false,
+    "success": null,
+    "failures": [],
+    "details": "Sin fecha asignada. Depende de la ventana de transferencia a Marte.",
+    "rocket": "5e9d0d96eda699382d09d1ee",
+    "launchpad": "5e9e4502f5090927f8566f85",
+    "payloads": [],
+    "links": {
+      "patch": { "small": null, "large": null },
+      "webcast": null,
+      "wikipedia": null,
+      "article": null
+    }
+  },
+  {
+    "id": "6ab5c8d9cd3b2f1e8c4a8401",
+    "flight_number": "doscientos sesenta",
+    "name": "Registro corrupto de la fuente",
+    "date_utc": "2027-06-01T00:00:00.000Z",
+    "date_precision": "hour",
+    "upcoming": true,
+    "success": null,
+    "rocket": "5e9d0d95eda69973a809d1ec",
+    "launchpad": "5e9e4501f509094ba4566f84",
+    "payloads": [],
+    "links": null
+  }
+]

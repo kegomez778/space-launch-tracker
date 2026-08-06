@@ -1,0 +1,46 @@
+[
+  {
+    "id": "5e9d0d95eda69955f709d1eb",
+    "name": "Falcon 1",
+    "type": "rocket",
+    "active": false,
+    "stages": 2,
+    "first_flight": "2006-03-24",
+    "height": { "meters": 22.25 },
+    "mass": { "kg": 30146 },
+    "description": "El primer vehículo de la compañía y el primer cohete de combustible líquido desarrollado con capital privado en alcanzar órbita."
+  },
+  {
+    "id": "5e9d0d95eda69973a809d1ec",
+    "name": "Falcon 9",
+    "type": "rocket",
+    "active": true,
+    "stages": 2,
+    "first_flight": "2010-06-04",
+    "height": { "meters": 70 },
+    "mass": { "kg": 549054 },
+    "description": "Vehículo de dos etapas y primera etapa reutilizable, diseñado para el transporte fiable de carga y tripulación a órbita."
+  },
+  {
+    "id": "5e9d0d95eda69974db09d1ed",
+    "name": "Falcon Heavy",
+    "type": "rocket",
+    "active": true,
+    "stages": 2,
+    "first_flight": "2018-02-06",
+    "height": { "meters": 70 },
+    "mass": { "kg": 1420788 },
+    "description": "Tres núcleos de Falcon 9 acoplados. El cohete operativo de mayor capacidad de carga en servicio."
+  },
+  {
+    "id": "5e9d0d96eda699382d09d1ee",
+    "name": "Starship",
+    "type": "rocket",
+    "active": false,
+    "stages": 2,
+    "first_flight": "2021-12-01",
+    "height": { "meters": 118 },
+    "mass": { "kg": 1335000 },
+    "description": "Sistema totalmente reutilizable concebido para carga pesada y vuelo interplanetario."
+  }
+]

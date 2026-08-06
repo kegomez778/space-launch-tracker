@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { validateEach } from '../../../shared/infrastructure/record-validation';
-import { toCatalogLaunch, toCatalogPayload, toCatalogRocket } from './spacex.mapper';
+import { toCatalogLaunch, toCatalogPayload } from './spacex.mapper';
 import { spaceXLaunchSchema, spaceXPayloadSchema } from './spacex.schemas';
 
 const baseLaunch = {
