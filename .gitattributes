@@ -1,0 +1,26 @@
+# Normaliza los finales de línea para que el repositorio se comporte igual en
+# Linux, macOS y Windows. Sin esto, un clon en Windows con core.autocrlf=true
+# convierte a CRLF ficheros que no lo toleran.
+* text=auto eol=lf
+
+# Estos son sensibles de verdad: nvm no reconoce la versión si el fichero lleva
+# CRLF, y un script con CRLF falla con "bad interpreter" al ejecutarse en Linux.
+.nvmrc text eol=lf
+*.sh text eol=lf
+*.mjs text eol=lf
+
+# Los ficheros por lotes de Windows necesitan justo lo contrario.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binarios: nunca convertir, y no mostrarlos en los diffs.
+*.png binary
+*.jpg binary
+*.svg text eol=lf
+*.ico binary
+*.db binary
+*.bundle binary
+
+# Generado por npm: el diff no aporta nada en revisión, pero el fichero sí debe
+# versionarse para que la instalación sea reproducible.
+package-lock.json -diff linguist-generated
