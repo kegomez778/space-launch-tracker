@@ -1,0 +1,104 @@
+.highlight {
+  color: var(--color-accent);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+.ok {
+  color: var(--color-success);
+}
+
+.unresolvedPanel {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 30%, var(--color-line));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-warning) 5%, transparent);
+}
+
+.unresolvedTitle {
+  font-size: var(--text-base);
+}
+
+.unresolvedNote {
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.unresolvedList {
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.unresolvedItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+}
+
+.occurrences {
+  color: var(--color-text-faint);
+  font-size: var(--text-xs);
+}
+
+.footnote {
+  margin-top: var(--space-3);
+  max-width: 72ch;
+  color: var(--color-text-faint);
+  font-size: var(--text-sm);
+}
+
+.syncTable {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.syncHeader,
+.syncRow {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr 1.4fr;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+}
+
+.syncHeader {
+  background: var(--color-surface-raised);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.syncRow {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 44rem) {
+  .syncHeader,
+  .syncRow {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .syncHeader {
+    display: none;
+  }
+}

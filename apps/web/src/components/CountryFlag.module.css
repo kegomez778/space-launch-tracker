@@ -1,0 +1,38 @@
+.flag,
+.fallback {
+  flex-shrink: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  /* Alto fijo y overflow oculto: aunque el navegador intente pintar el texto
+     alternativo de una imagen rota, no puede empujar la retícula. */
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.fallback {
+  display: inline-grid;
+  place-items: center;
+  background: var(--color-void);
+  color: var(--color-text-faint);
+  font-family: var(--font-data);
+  letter-spacing: 0.04em;
+}
+
+.sm {
+  width: 1.5rem;
+  height: 1.05rem;
+  font-size: 0.55rem;
+}
+
+.md {
+  width: 2.5rem;
+  height: 1.75rem;
+  font-size: var(--text-xs);
+}
+
+.lg {
+  width: 4.5rem;
+  height: 3.15rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+}

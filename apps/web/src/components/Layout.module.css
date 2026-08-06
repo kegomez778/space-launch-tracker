@@ -1,0 +1,157 @@
+.shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-void) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  max-width: var(--layout-max);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* La marca en monoespaciada con un guion de designación: identifica al producto
+   como instrumento de datos, no como revista de divulgación. */
+.brandMark {
+  font-family: var(--font-data);
+  color: var(--color-accent);
+}
+
+.brandSub {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-1);
+  margin-right: auto;
+}
+
+.navLink {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.navLinkActive {
+  color: var(--color-accent);
+  background: var(--color-accent-wash);
+}
+
+.session {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.userEmail {
+  color: var(--color-text-muted);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+}
+
+.ghostButton {
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.ghostButton:hover {
+  color: var(--color-text);
+  border-color: var(--color-line-strong);
+}
+
+.primaryLink {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  transition: background var(--transition-fast);
+}
+
+.primaryLink:hover {
+  background: var(--color-accent-wash);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-10);
+}
+
+.footer {
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-5);
+  color: var(--color-text-faint);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 48rem) {
+  .headerInner {
+    gap: var(--space-3);
+    padding: 0 var(--space-4);
+  }
+
+  .brandSub,
+  .userEmail {
+    display: none;
+  }
+
+  .navLink {
+    padding: var(--space-2);
+  }
+}

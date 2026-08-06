@@ -1,0 +1,13 @@
+.cta {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  transition: background var(--transition-fast);
+}
+
+.cta:hover {
+  background: var(--color-accent-wash);
+}

@@ -1,0 +1,190 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-line-strong);
+  background: var(--color-surface-raised);
+}
+
+/*
+ * Filete de estado en el borde izquierdo. Codifica el resultado sin depender del
+ * color como único canal: el texto de la etiqueta dice lo mismo.
+ */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  background: var(--accent, var(--color-line));
+}
+
+.upcoming {
+  --accent: var(--color-scheduled);
+}
+.success {
+  --accent: var(--color-success);
+}
+.failure {
+  --accent: var(--color-failure);
+}
+.pending {
+  --accent: var(--color-pending);
+}
+
+.patch {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background: var(--color-void);
+}
+
+/* Sustituto cuando el parche no existe o el host de terceros lo ha perdido:
+   el número de vuelo, que siempre está. Nunca un icono roto. */
+.patchFallback {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-void);
+  color: var(--color-text-faint);
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+}
+
+.body {
+  min-width: 0;
+}
+
+.name {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.nameText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flightNumber {
+  flex-shrink: 0;
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-1);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.provisional {
+  color: var(--color-warning);
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+.followButton {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-faint);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.followButton:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
+}
+
+.followButtonActive {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-accent-wash);
+}
+
+@media (max-width: 40rem) {
+  .card {
+    grid-template-columns: 2.75rem 1fr;
+    grid-template-areas:
+      'patch body'
+      'side side';
+  }
+
+  .patch,
+  .patchFallback {
+    grid-area: patch;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .body {
+    grid-area: body;
+  }
+
+  .side {
+    grid-area: side;
+    justify-content: space-between;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .name {
+    white-space: normal;
+  }
+
+  .nameText {
+    white-space: normal;
+  }
+}
