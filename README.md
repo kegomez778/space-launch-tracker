@@ -3,16 +3,21 @@
 MVP de una plataforma para consultar lanzamientos espaciales, explorarlos por país y
 seguir las misiones de interés. Integra **SpaceX API v4** y **REST Countries v3.1**.
 
-> **Instalación medida: 29 segundos** desde `git clone` hasta la base sembrada, en una
-> máquina con Node.js ya instalado. No es una estimación: está cronometrada sobre un
-> clon limpio (§ Instalación).
+> **Instalación medida: 29 s en Linux, 4 min 20 s en Windows**, desde `git clone` hasta
+> la base sembrada. No son estimaciones: están cronometradas sobre clones limpios en
+> ambos sistemas (§ Instalación).
 
 ---
 
 ## Puesta en marcha
 
-**Requisito único: Node.js 22 o superior.** Sin Docker, sin servidor de base de datos,
+**Requisito único: Node.js 22.12+ o 24+.** Sin Docker, sin servidor de base de datos,
 sin claves de API. Ninguna de las dos fuentes externas requiere credenciales.
+
+> El mínimo no es negociable ni es un aviso: **Prisma aborta la instalación** por debajo
+> de 22.12 (y rechaza toda la rama 23, que no es LTS). Comprobado: con Node 20.11 el
+> `npm install` falla entero en el `preinstall`. Si tienes una versión anterior,
+> `winget install OpenJS.NodeJS.LTS` en Windows o `nvm install 24` con nvm lo resuelve.
 
 ```bash
 git clone <url-del-repositorio>
@@ -153,24 +158,28 @@ Documentación completa:
 
 ---
 
-## Instalación: el número medido
+## Instalación: los números medidos
 
-Cronometrado sobre un clon limpio, con la caché de npm ya poblada:
+Cronometrado sobre clones limpios en los dos sistemas, no estimado:
 
-| Paso | Tiempo |
-|---|---|
-| `npm install` (576 paquetes, tres workspaces) | ~18 s |
-| `npm run setup` (build, migración y sembrado) | ~11 s |
-| **Total** | **~29 s** |
+| Paso | Linux · Node 22 | Windows 11 · Node 24 |
+|---|---|---|
+| `npm install` | ~18 s (caché caliente) | ~2 min 15 s (caché fría) |
+| `npm run setup` (build, migración y sembrado) | ~11 s | ~2 min 5 s |
+| `npm test` (88 tests) | ~9 s | ~25 s |
+| **Total hasta tener la app lista** | **~29 s** | **~4 min 20 s** |
 
-Con la caché de npm vacía, el primer `npm install` tarda alrededor de 1 min 15 s. En
-cualquier caso, muy por debajo del objetivo de 20 minutos.
+**Windows es del orden de diez veces más lento en el `setup`.** El grueso se lo lleva
+`ts-node` compilando la aplicación Nest entera para sembrar, sin caché incremental, más
+la penalización del sistema de ficheros. Sigue muy por debajo del objetivo de 20
+minutos, pero conviene no prometer los 29 segundos a quien vaya a instalarlo en Windows.
 
 Se sostiene sobre cuatro decisiones: un único `npm install` gracias a workspaces, SQLite
 (que es un fichero, sin servidor ni credenciales), `.env.example` con valores
 funcionales, y **cero dependencias nativas que compilen** — el hash de contraseñas usa
 binarios precompilados, porque un fallo de `node-gyp` en la máquina de otro es la causa
-más común de que una instalación se atasque.
+más común de que una instalación se atasque. Esa última decisión se comprobó en Windows:
+`@node-rs/argon2` resolvió su binario `win32-x64-msvc` sin intervenir `node-gyp`.
 
 ---
 
