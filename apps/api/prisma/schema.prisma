@@ -1,0 +1,232 @@
+// Modelo de dominio del catálogo. Ver docs/03-arquitectura.md §2.
+//
+// Dos restricciones de SQLite condicionan este esquema (ADR-002):
+//   1. No admite `enum` -> los enumerados se guardan como String y se validan
+//      contra union types de TypeScript en un único punto de conversión.
+//   2. No admite arrays -> las listas de texto libre se guardan como JSON en String.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../prisma/generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+/// País de REST Countries v3.1. La PK es el ISO 3166-1 alpha-2.
+model Country {
+  code           String  @id
+  code3          String
+  name           String
+  nameOfficial   String
+  /// Minúsculas y sin diacríticos: LIKE en SQLite no es insensible a acentos.
+  nameNormalized String
+  flagSvg        String?
+  flagPng        String?
+  flagAlt        String?
+  region         String?
+  subregion      String?
+  capital        String?
+  latitude       Float?
+  longitude      Float?
+
+  aliases       CountryAlias[]
+  launchpads    Launchpad[]
+  nationalities PayloadNationality[]
+  users         User[]
+  launchLinks   LaunchCountry[]
+
+  @@index([nameNormalized])
+  @@map("countries")
+}
+
+/// Sinónimos que resuelven a un país. Se alimenta de `altSpellings` de REST
+/// Countries y de una tabla curada en el repositorio. Hace auditable el puente B.
+model CountryAlias {
+  aliasNormalized String @id
+  countryCode     String
+  /// `rest_countries` o `curated`: permite distinguir lo heredado de lo decidido.
+  source          String
+
+  country Country @relation(fields: [countryCode], references: [code], onDelete: Cascade)
+
+  @@index([countryCode])
+  @@map("country_aliases")
+}
+
+model Rocket {
+  id          String  @id
+  name        String
+  type        String
+  active      Boolean
+  stages      Int
+  firstFlight String?
+  heightM     Float?
+  massKg      Float?
+  description String?
+
+  launches Launch[]
+
+  @@map("rockets")
+}
+
+/// Sitio de lanzamiento. `countryCode` es el puente A: no viene de la SpaceX API,
+/// lo aporta un mapeo curado (ver src/countries/domain/launchpad-country.map.ts).
+model Launchpad {
+  id          String  @id
+  name        String
+  fullName    String
+  locality    String?
+  region      String?
+  timezone    String?
+  latitude    Float?
+  longitude   Float?
+  status      String?
+  countryCode String?
+
+  country  Country? @relation(fields: [countryCode], references: [code])
+  launches Launch[]
+
+  @@index([countryCode])
+  @@map("launchpads")
+}
+
+model Launch {
+  id             String   @id
+  flightNumber   Int
+  name           String
+  nameNormalized String
+  dateUtc        DateTime
+  /// hour | day | month | quarter | half | year
+  datePrecision  String
+  isProvisional  Boolean  @default(false)
+  /// null mientras no ha volado. No es `false`: es "todavía no se sabe".
+  success        Boolean?
+  failureReason  String?
+  details        String?
+  patchSmall     String?
+  patchLarge     String?
+  webcast        String?
+  wikipedia      String?
+  article        String?
+  /// Valor original del flag `upcoming` de la fuente. El estado real se deriva de
+  /// la fecha; guardarlo permite detectar y reportar la contradicción (riesgo R3).
+  sourceUpcoming Boolean
+  rocketId       String?
+  launchpadId    String?
+
+  rocket    Rocket?         @relation(fields: [rocketId], references: [id])
+  launchpad Launchpad?      @relation(fields: [launchpadId], references: [id])
+  payloads  Payload[]
+  countries LaunchCountry[]
+  follows   Follow[]
+
+  @@index([dateUtc])
+  @@index([nameNormalized])
+  @@index([rocketId])
+  @@map("launches")
+}
+
+model Payload {
+  id       String  @id
+  launchId String
+  name     String
+  type     String?
+  massKg   Float?
+  orbit    String?
+  /// JSON: lista de texto libre sin identidad propia.
+  customers     String @default("[]")
+  manufacturers String @default("[]")
+
+  launch        Launch               @relation(fields: [launchId], references: [id], onDelete: Cascade)
+  nationalities PayloadNationality[]
+
+  @@index([launchId])
+  @@map("payloads")
+}
+
+/// Entidad propia y no un array de strings: aquí vive el puente B, con el rastro
+/// completo de cómo se resolvió cada valor (ver docs/03-arquitectura.md §2.3).
+model PayloadNationality {
+  id           String  @id @default(cuid())
+  payloadId    String
+  /// El valor tal cual lo entregó la API, sin tocar. Nunca se sobrescribe.
+  rawValue     String
+  /// resolved | not_a_country | unresolved
+  resolution   String
+  /// Cuál de los seis pasos de la cadena resolvió el valor.
+  method       String?
+  countryCode  String?
+
+  payload Payload  @relation(fields: [payloadId], references: [id], onDelete: Cascade)
+  country Country? @relation(fields: [countryCode], references: [code])
+
+  @@index([payloadId])
+  @@index([countryCode])
+  @@index([resolution])
+  @@map("payload_nationalities")
+}
+
+/// Proyección materializada lanzamiento <-> país, recompuesta al final de cada
+/// sincronización. Convierte la consulta por país en un único join sobre índice
+/// en lugar de un join de tres saltos con deduplicación (docs/03-arquitectura.md §3.1).
+model LaunchCountry {
+  launchId    String
+  countryCode String
+  /// site | payload
+  relation    String
+
+  launch  Launch  @relation(fields: [launchId], references: [id], onDelete: Cascade)
+  country Country @relation(fields: [countryCode], references: [code], onDelete: Cascade)
+
+  @@id([launchId, countryCode, relation])
+  @@index([countryCode, launchId])
+  @@map("launch_countries")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String
+  emailNormalized String   @unique
+  passwordHash    String
+  countryCode     String?
+  createdAt       DateTime @default(now())
+
+  country Country? @relation(fields: [countryCode], references: [code])
+  follows Follow[]
+
+  @@map("users")
+}
+
+/// La PK compuesta hace imposible un seguimiento duplicado a nivel de esquema,
+/// en lugar de comprobarlo en código.
+model Follow {
+  userId     String
+  launchId   String
+  followedAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  launch Launch @relation(fields: [launchId], references: [id], onDelete: Cascade)
+
+  @@id([userId, launchId])
+  @@index([userId])
+  @@map("follows")
+}
+
+/// Bitácora de sincronización. Alimenta el indicador de antigüedad de cada
+/// respuesta y hace observable la degradación en vez de silenciosa.
+model SyncRun {
+  id               String    @id @default(cuid())
+  resource         String
+  /// running | success | failed
+  status           String
+  startedAt        DateTime  @default(now())
+  finishedAt       DateTime?
+  recordsProcessed Int       @default(0)
+  recordsRejected  Int       @default(0)
+  error            String?
+
+  @@index([resource, startedAt])
+  @@map("sync_runs")
+}
