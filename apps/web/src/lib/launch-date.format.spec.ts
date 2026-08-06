@@ -12,7 +12,15 @@ const dateWith = (precision: LaunchDateDto['precision'], overrides: Partial<Laun
 
 describe('formatLaunchDate', () => {
   it('muestra la hora sólo cuando la fuente la conoce', () => {
-    expect(formatLaunchDate(dateWith('hour'))).toMatch(/14:22|15:22/);
+    // La hora se presenta en la zona del usuario (supuesto S7), así que el valor
+    // concreto depende de dónde se ejecute el test. Fijar "14:22" lo ataría a UTC
+    // y fallaría en cualquier otra máquina. Lo que se comprueba es el contrato:
+    // que aparezca la hora que corresponde a esa zona.
+    const localTime = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit' }).format(
+      new Date('2026-02-03T14:22:00.000Z'),
+    );
+
+    expect(formatLaunchDate(dateWith('hour'))).toContain(localTime);
   });
 
   // El núcleo del requisito: con precisión de mes, la hora del dato es relleno.

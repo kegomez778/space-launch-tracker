@@ -28,7 +28,14 @@ describe('API', () => {
     process.env.JWT_SECRET = 'test-secret';
     process.env.SYNC_ENABLED = 'false';
 
-    execFileSync('npx', ['prisma', 'migrate', 'deploy'], {
+    // Se invoca el CLI de Prisma con el propio Node en lugar de a través de npx.
+    // En Windows npx es un .cmd, y Node ya no lo lanza sin shell: true desde el
+    // endurecimiento por CVE-2024-27980 (ENOENT primero, EINVAL después). Resolver
+    // el entry point del paquete evita tanto el shell como sus problemas de
+    // entrecomillado en rutas con espacios, y funciona igual en los tres sistemas.
+    const prismaCli = require.resolve('prisma/build/index.js');
+
+    execFileSync(process.execPath, [prismaCli, 'migrate', 'deploy'], {
       cwd: join(__dirname, '..'),
       env: process.env,
       stdio: 'pipe',
