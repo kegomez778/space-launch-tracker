@@ -1,5 +1,11 @@
 # SLT-1 · Seguimiento de lanzamientos espaciales
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c72180b7-3f8c-40d6-a2b8-a21017e69c4d" alt="Vista principal de la plataforma de seguimiento de lanzamientos espaciales" width="900" />
+</p>
+
+
 MVP de una plataforma para consultar lanzamientos espaciales, explorarlos por país y
 seguir las misiones de interés. Integra **SpaceX API v4** y **REST Countries v3.1**.
 
