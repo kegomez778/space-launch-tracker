@@ -15,7 +15,7 @@ export class RestCountriesProvider implements CountryCatalogProvider {
 
   async fetchCountries(): Promise<CountryCatalogSnapshot> {
     // `?fields=` no es una optimización: v3.1 rechaza /all sin él.
-    const raw = await this.http.getJson<unknown[]>(`/all?fields=${REST_COUNTRIES_FIELDS}`);
+    const raw = await this.http.getJsonCollection(`/all?fields=${REST_COUNTRIES_FIELDS}`);
     const outcome = validateEach(restCountrySchema, raw);
 
     for (const rejected of outcome.rejected) {

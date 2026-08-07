@@ -27,10 +27,10 @@ export class SpaceXCatalogProvider implements LaunchCatalogProvider {
 
   async fetchCatalog(): Promise<CatalogSnapshot> {
     const [launchesRaw, rocketsRaw, launchpadsRaw, payloadsRaw] = await Promise.all([
-      this.http.getJson<unknown[]>('/launches'),
-      this.http.getJson<unknown[]>('/rockets'),
-      this.http.getJson<unknown[]>('/launchpads'),
-      this.http.getJson<unknown[]>('/payloads'),
+      this.http.getJsonCollection('/launches'),
+      this.http.getJsonCollection('/rockets'),
+      this.http.getJsonCollection('/launchpads'),
+      this.http.getJsonCollection('/payloads'),
     ]);
 
     const launches = validateEach(spaceXLaunchSchema, launchesRaw);

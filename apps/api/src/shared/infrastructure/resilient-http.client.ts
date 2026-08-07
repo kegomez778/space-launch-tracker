@@ -57,6 +57,33 @@ export class ResilientHttpClient {
     return this.breaker.execute(() => this.attemptWithRetries<T>(path));
   }
 
+  /**
+   * Igual que `getJson`, pero exige que la respuesta sea una colección.
+   *
+   * Existe por un caso real: al deprecar su API, REST Countries dejó de devolver
+   * el array y pasó a responder **HTTP 200** con un sobre de error. Un 200 no
+   * dispara ninguna protección —ni reintento, ni circuito—, así que el objeto
+   * llegaba intacto hasta el código que esperaba una lista y reventaba allí con
+   * un TypeError ilegible.
+   *
+   * Comprobar la forma aquí convierte ese fallo en un error de proveedor con el
+   * motivo real, que es lo que alguien necesita leer a las tres de la mañana.
+   */
+  async getJsonCollection(path: string): Promise<unknown[]> {
+    const payload = await this.getJson<unknown>(path);
+
+    if (Array.isArray(payload)) {
+      return payload;
+    }
+
+    throw new ExternalProviderError(
+      this.options.serviceName,
+      'invalid_payload',
+      `${this.options.serviceName} devolvió un objeto donde se esperaba una lista. ` +
+        `${describeUpstreamError(payload) ?? `Recibido: ${describeShape(payload)}.`}`,
+    );
+  }
+
   private async attemptWithRetries<T>(path: string): Promise<T> {
     const url = `${this.options.baseUrl}${path}`;
     let lastError: ExternalProviderError | undefined;
@@ -140,4 +167,43 @@ export function backoffWithJitter(attempt: number, baseMs = 300, capMs = 8000): 
 
 function describe(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
+}
+
+/**
+ * Extrae el mensaje de un sobre de error servido con estado 200. Se contemplan
+ * las dos formas habituales: `{ errors: [{ message }] }`, que es la que usa
+ * REST Countries al anunciar su deprecación, y un `{ message }` suelto.
+ */
+function describeUpstreamError(payload: unknown): string | null {
+  if (typeof payload !== 'object' || payload === null) {
+    return null;
+  }
+
+  const { errors, message } = payload as { errors?: unknown; message?: unknown };
+
+  if (Array.isArray(errors)) {
+    const messages = errors
+      .map((entry) =>
+        typeof entry === 'object' && entry !== null && typeof (entry as { message?: unknown }).message === 'string'
+          ? (entry as { message: string }).message
+          : null,
+      )
+      .filter((entry): entry is string => entry !== null);
+
+    if (messages.length > 0) {
+      return `El proveedor informa: ${messages.join(' ')}`;
+    }
+  }
+
+  return typeof message === 'string' ? `El proveedor informa: ${message}` : null;
+}
+
+function describeShape(payload: unknown): string {
+  if (payload === null) {
+    return 'null';
+  }
+  if (typeof payload !== 'object') {
+    return typeof payload;
+  }
+  return `objeto con las claves [${Object.keys(payload).slice(0, 6).join(', ')}]`;
 }

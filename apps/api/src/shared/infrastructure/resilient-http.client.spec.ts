@@ -103,6 +103,53 @@ describe('ResilientHttpClient', () => {
   });
 });
 
+describe('getJsonCollection', () => {
+  it('devuelve la lista cuando el proveedor responde con una', async () => {
+    const fetchFn = vi.fn().mockResolvedValue(jsonResponse([{ id: 'a' }, { id: 'b' }]));
+    const client = new ResilientHttpClient(options, fetchFn, noSleep);
+
+    await expect(client.getJsonCollection('/launches')).resolves.toHaveLength(2);
+  });
+
+  /*
+   * Caso observado en producción: al deprecar su API, REST Countries dejó de
+   * devolver el array y pasó a responder HTTP 200 con un sobre de error. Un 200
+   * no dispara reintento ni circuito, así que el objeto llegaba hasta el código
+   * que esperaba una lista y reventaba allí con un TypeError ilegible.
+   */
+  it('convierte un sobre de error servido con 200 en un error de proveedor legible', async () => {
+    const deprecation = {
+      success: false,
+      data: null,
+      errors: [{ message: 'This API version has been deprecated. Please migrate to v5.' }],
+    };
+    const fetchFn = vi.fn().mockResolvedValue(jsonResponse(deprecation));
+    const client = new ResilientHttpClient(options, fetchFn, noSleep);
+
+    await expect(client.getJsonCollection('/all')).rejects.toMatchObject({
+      reason: 'invalid_payload',
+      message: expect.stringContaining('has been deprecated'),
+    });
+  });
+
+  it('describe la forma recibida cuando el objeto no trae mensaje de error', async () => {
+    const fetchFn = vi.fn().mockResolvedValue(jsonResponse({ total: 0, page: 1 }));
+    const client = new ResilientHttpClient(options, fetchFn, noSleep);
+
+    await expect(client.getJsonCollection('/all')).rejects.toMatchObject({
+      message: expect.stringContaining('total, page'),
+    });
+  });
+
+  it('no reintenta una respuesta con forma incorrecta: repetirla daría lo mismo', async () => {
+    const fetchFn = vi.fn().mockResolvedValue(jsonResponse({ success: false }));
+    const client = new ResilientHttpClient(options, fetchFn, noSleep);
+
+    await expect(client.getJsonCollection('/all')).rejects.toThrow(ExternalProviderError);
+    expect(fetchFn).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('backoffWithJitter', () => {
   it('crece con cada intento', () => {
     const first = backoffWithJitter(0);

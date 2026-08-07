@@ -12,7 +12,8 @@
     "db:migrate": "prisma migrate deploy",
     "db:generate": "prisma generate",
     "db:seed": "ts-node -P tsconfig.seed.json prisma/seed.ts",
-    "db:reset": "prisma migrate reset --force"
+    "db:reset": "prisma migrate reset --force",
+    "sync:once": "ts-node -P tsconfig.seed.json scripts/sync-once.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",

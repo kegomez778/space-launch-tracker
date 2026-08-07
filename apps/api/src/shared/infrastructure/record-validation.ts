@@ -20,6 +20,15 @@ export interface ValidationOutcome<T> {
  * mientras el resto entra con normalidad.
  */
 export function validateEach<T>(schema: ZodType<T>, records: readonly unknown[]): ValidationOutcome<T> {
+  // Segunda línea de defensa: los proveedores ya piden la colección con
+  // getJsonCollection, pero esta función también la invocan los lectores de
+  // fixtures. Fallar aquí con un mensaje claro es preferible a un TypeError.
+  if (!Array.isArray(records)) {
+    throw new TypeError(
+      `Se esperaba una lista de registros para validar y se recibió ${records === null ? 'null' : typeof records}`,
+    );
+  }
+
   const valid: T[] = [];
   const rejected: RejectedRecord[] = [];
 
