@@ -1,10 +1,3 @@
-#!/usr/bin/env node
-/**
- * Prepara el entorno local en un solo comando: copia los .env de ejemplo si no
- * existen, aplica las migraciones y siembra la base con los fixtures.
- *
- * Es idempotente: volver a ejecutarlo no pisa un .env ya editado.
- */
 import { execSync } from 'node:child_process';
 import { copyFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -34,8 +27,7 @@ step('Variables de entorno');
 ensureEnv(apiDir, 'api');
 ensureEnv(webDir, 'web');
 
-// El backend y el frontend importan @slt/shared compilado, así que construirlo
-// es el primer paso y no un detalle: sin él, el sembrado no arranca.
+
 step('Paquete compartido');
 run('npm run build --workspace packages/shared', root);
 

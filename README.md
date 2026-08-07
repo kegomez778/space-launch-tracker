@@ -22,7 +22,7 @@ sobre el modo de sincronización real).
 > `winget install OpenJS.NodeJS.LTS` en Windows o `nvm install 24` con nvm lo resuelve.
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/kegomez778/space-launch-tracker.git
 cd space-launch-tracker
 
 nvm use          # opcional, .nvmrc fija Node 22
