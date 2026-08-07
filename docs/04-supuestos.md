@@ -105,6 +105,27 @@ estético. Sin alto acotado, una imagen rota es un problema de layout.
 
 ---
 
+### 2.5 El supuesto que el mundo invalidó: las fuentes no piden credenciales
+
+No aparecía numerado porque no parecía un supuesto: las dos APIs del enunciado eran
+públicas y abiertas, y sobre eso se construyó el argumento central de instalación sin
+fricción (ADR-000, ADR-008).
+
+El 6 de agosto de 2026, al poder ejecutar por primera vez la sincronización contra las
+APIs reales, resultó falso: **REST Countries v3.1 fue deprecada** y su sustituta exige
+registro y clave de API.
+
+Es el recordatorio de que un supuesto sobre un tercero **caduca sin avisar**. Y de que el
+mecanismo que lo detectó no fue un test —los fixtures no podían detectarlo, porque
+reproducen el contrato antiguo por definición— sino ejecutar contra el sistema real. Los
+fixtures protegen de las regresiones propias; no protegen de que el mundo cambie.
+
+Consecuencia asumida para el MVP: la sincronización real de países queda inoperativa,
+con un error explícito, y el modo por defecto sigue cubriendo toda la funcionalidad. Las
+tres salidas posibles están evaluadas en [`05-roadmap.md`](./05-roadmap.md) §0.
+
+---
+
 ## 4. Lo que sigue sin resolverse, a propósito
 
 - **La resolución de nacionalidades no llega al 100 %**, y no es objetivo que llegue. La

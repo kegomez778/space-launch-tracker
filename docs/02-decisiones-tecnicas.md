@@ -282,6 +282,26 @@ con ambas APIs bloqueadas por política de red, la haría imposible de construir
   `name`, `full_name`, `locality`, `region`, `timezone`, `latitude`, `longitude`,
   `status`. `/payloads`: `id`, `name`, `type`, `mass_kg`, `orbit`, `customers[]`,
   `nationalities[]`, `manufacturers[]`.
+> **Actualización del 6 de agosto de 2026 — REST Countries v3.1 ha sido deprecada.**
+>
+> Comprobado ejecutando la sincronización contra las APIs reales. Sus endpoints
+> responden ahora `HTTP 200` con un sobre `{success:false, errors:[…]}` que remite a una
+> **v5 alojada en `api.restcountries.com` y con clave de API obligatoria**.
+>
+> Dos consecuencias que este ADR debe recoger:
+>
+> 1. **La forma de fallar importaba más que el fallo.** Devolver el error con estado 200
+>    esquiva todas las protecciones de ADR-005 —reintento, circuito, mapeo de errores—
+>    porque todas se disparan con códigos de error. Se corrigió exigiendo que la
+>    respuesta sea una colección y extrayendo el mensaje del proveedor. Es un refuerzo
+>    real de la capa anticorrupción: **un 200 no significa que la respuesta sea válida.**
+> 2. **No se migra a v5 en el alcance del MVP.** Exigiría una credencial de terceros en
+>    el arranque, lo que contradice ADR-000 y ADR-008, que son la razón de ser de todo
+>    el stack elegido. Evaluado en el roadmap.
+>
+> El campo `?fields=` documentado abajo sigue siendo correcto para v3.1; se conserva la
+> descripción original porque describe el contrato con el que se construyó el proyecto.
+
 - **REST Countries v3.1** — `/alpha` y `/all` **siempre con `?fields=`** (v3.1 rechaza
   `/all` sin él): `cca2`, `cca3`, `name.common`, `name.official`, `flags.svg`,
   `flags.png`, `flags.alt`, `region`, `subregion`, `capital`, `latlng`, `altSpellings`.

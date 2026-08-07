@@ -12,7 +12,9 @@ seguir las misiones de interés. Integra **SpaceX API v4** y **REST Countries v3
 ## Puesta en marcha
 
 **Requisito único: Node.js 22.12+ o 24+.** Sin Docker, sin servidor de base de datos,
-sin claves de API. Ninguna de las dos fuentes externas requiere credenciales.
+sin claves de API. **La aplicación arranca completa y con datos sin registrarse en
+ningún servicio de terceros** (ver § Estado de las fuentes externas para el matiz
+sobre el modo de sincronización real).
 
 > El mínimo no es negociable ni es un aviso: **Prisma aborta la instalación** por debajo
 > de 22.12 (y rechaza toda la rama 23, que no es LTS). Comprobado: con Node 20.11 el
@@ -202,6 +204,37 @@ migraciones.
 
 Docker no forma parte de la instalación local a propósito: exigirlo añadiría un runtime
 más. Está en el roadmap como mejora para estandarizar entornos de despliegue.
+
+---
+
+## Estado de las fuentes externas
+
+Comprobado el **6 de agosto de 2026** ejecutando `npm run sync:once` con
+`SYNC_ENABLED=true` contra las APIs reales. Ambas fuentes que el ejercicio fijaba como
+obligatorias están hoy degradadas, y conviene decirlo antes de que alguien lo descubra
+al arrancar:
+
+| Fuente | Estado | Efecto |
+|---|---|---|
+| **REST Countries v3.1** | **Deprecada.** Devuelve `HTTP 200` con `{success:false, errors:[…]}` remitiendo a una v5 que vive en otro host y **exige clave de API** previo registro | La sincronización real de países falla con un error explícito |
+| **SpaceX API v4** | Intermitente. Respondió `525` (fallo de handshake TLS en su CDN) durante la comprobación | La sincronización real de lanzamientos puede fallar |
+
+**Nada de esto impide usar la aplicación.** El modo por defecto se sirve de los fixtures
+del repositorio y funciona por completo: catálogo, países, seguimiento y calidad de
+datos. Es justamente el escenario para el que se diseñó la arquitectura (ADR-005), y la
+caída sirvió para verificarlo con una avería real en lugar de simulada: con **las dos
+fuentes caídas a la vez**, la aplicación conservó sus 16 lanzamientos, sus 20 países y su
+91,7 % de nacionalidades clasificadas, y registró el fallo en `/api/data-quality`.
+
+**Por qué no se migró a v5.** La v5 exige registrarse y propagar una credencial, lo que
+contradice frontalmente el principio que gobierna todo el proyecto: que el evaluador
+clone y arranque sin conseguir nada de nadie (ADR-000, ADR-008). Cambiar eso a última
+hora sería sacrificar la propiedad más valiosa del MVP por una funcionalidad que el modo
+por defecto ya cubre. La migración está evaluada en el roadmap
+([`docs/05-roadmap.md`](docs/05-roadmap.md)) con su coste y sus implicaciones.
+
+El enunciado fijó v3.1 cuando era la versión vigente; que haya sido deprecada después es
+una circunstancia sobrevenida, no una decisión del proyecto.
 
 ---
 

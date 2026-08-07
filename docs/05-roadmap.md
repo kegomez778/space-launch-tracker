@@ -9,6 +9,33 @@ de un catálogo consolidado y que una parte medible de los visitantes volverá.
 
 ---
 
+## 0. Lo primero, porque ya está roto
+
+**Migrar la fuente de países: REST Countries v3.1 fue deprecada** (comprobado el 6 de
+agosto de 2026, ver README § Estado de las fuentes externas). No es una mejora, es una
+reparación: el modo de sincronización real de países no funciona hoy.
+
+La aplicación no está caída —el modo por defecto se sirve de fixtures y cubre todas las
+funcionalidades—, pero la ruta de datos frescos de países sí lo está.
+
+Tres salidas, con sus consecuencias reales:
+
+| Salida | Coste | Lo que se pierde |
+|---|---|---|
+| **Migrar a REST Countries v5** | Bajo en código: cambia el host, se añade cabecera `Authorization: Bearer` y se revisa el esquema Zod contra su nuevo contrato | **La instalación sin credenciales**, que es la propiedad que gobierna ADR-000 y ADR-008. Habría que reescribir esa promesa en README y ADR, y el evaluador pasaría a necesitar una cuenta |
+| **Sustituir por una fuente sin clave** (p. ej. el dataset de `mledoze/countries` servido estático, o una copia versionada en el repositorio) | Medio: hay que remapear campos y decidir la política de actualización | Se aleja de la fuente que fijaba el enunciado. A cambio, los datos de países son casi inmutables, así que una copia versionada es defendible: **cambian de siglo en siglo, no de hora en hora** |
+| **Dejarlo como está** | Cero | Nada funcionalmente, porque los fixtures cubren el uso. Pero el proyecto arrastra una integración que no se puede ejercitar |
+
+**Recomendación: la segunda.** La primera sacrifica lo mejor del proyecto por datos que
+apenas cambian; la tercera deja deuda indefinida. Un catálogo de países versionado en el
+repositorio, con un comando para refrescarlo desde la fuente que sea, encaja con la
+naturaleza del dato y conserva la instalación sin fricción.
+
+Nótese que el puente A (país del sitio de lanzamiento) ya funciona así: un mapeo curado
+en el repositorio. Extender ese criterio al catálogo completo es coherente, no un parche.
+
+---
+
 ## 1. Funcionalidades
 
 ### Prioridad alta — mueven la retención directamente
@@ -129,8 +156,13 @@ proyecto no necesita.
 
 ## 6. Si sólo hubiera tiempo para tres cosas
 
-1. **Alertas de lanzamiento.** Es lo único de esta lista que cambia la naturaleza del
-   producto en lugar de mejorarlo.
-2. **Refresh tokens.** Es la deuda que impide abrir a usuarios reales con tranquilidad.
-3. **Launch Library 2 como segunda fuente.** Es lo que hace que el producto responda al
-   caso de negocio completo y no sólo a su fuente obligatoria.
+1. **Reparar la fuente de países** (§0). Es lo único de esta lista que no es una mejora
+   sino una avería: la integración existe y hoy no puede ejercitarse.
+2. **Alertas de lanzamiento.** Es lo único que cambia la naturaleza del producto en
+   lugar de mejorarlo.
+3. **Refresh tokens.** Es la deuda que impide abrir a usuarios reales con tranquilidad.
+
+Launch Library 2 como segunda fuente queda cuarta por poco: es lo que haría que el
+producto responda al caso de negocio completo y no sólo a su fuente obligatoria, y
+además resolvería de paso la fragilidad de depender de una única API de terceros que ya
+ha demostrado caerse.
